@@ -8,22 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = CommentViewModel()
     var body: some View {
         TabView{
-            SwiftUIView()
+            SleepView()
                 .tabItem {
                     Image(systemName: "circle.fill")
                     Text("ホーム")
                 }
-            Text("2")
+            ContentView1()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("さがす")
                 }
-            CommentsView()
+            ContentComementsView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "message.fill")
                     Text("メッセージ")
+                }
+            SleepCalendarView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("カレンダー")
                 }
         }
         //ここで色の指定
